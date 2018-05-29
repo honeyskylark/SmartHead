@@ -1,0 +1,85 @@
+﻿@model IEnumerable<WebApplication.Models.Feedback>
+@using WebApplication.Extensions
+@{
+    ViewData["Title"] = "Отзывы";
+    IEnumerable<Vote> Votes = ViewBag.Votes;
+    @*@{Vote vote = Votes.Where(v => v.Id == feedback.Id).FirstOrDefault();}*@
+}
+<h4 class="teal-text">Идеи об улучшении продуктов Honor</h4>
+<h5>Чтобы оставить свою идею, пожалуйста, зарегистрируйтесь.</h5>
+<hr class="hr-splitter" />
+
+@foreach (var feedback in Model)
+{
+    IEnumerable<Vote> votes = Votes.Where(v => v.FeedbackId == feedback.Id);    
+    <div class="feedback-container white z-depth-1">
+        <p class="red-text">Пользователь: @feedback.User.Login</p>
+        <p class="teal-text">@feedback.Name</p>
+        <p>@feedback.Content</p>
+        <hr class="hr-crud-split" />
+        <div class="row">
+            <div class="col s6"> <p style="text-align:left">Рейтинг отзыва: 
+                <div style="float: left;">
+                @if (HtmlExtensions.CalculateAvarage(votes) > 0)
+                {
+                    @for (int i = 1; i <= HtmlExtensions.CalculateAvarage(votes); i++)
+                    {
+                        <i class="material-icons">star</i>
+                    }   
+                }
+                else
+                {
+                    <p>Голосов пока нет</p>
+                }
+                </div></p>
+            </div>
+            <div class="col s6">
+                  @if (User.Identity.IsAuthenticated)
+                  {
+                      
+                      // Если список голосов пуст, пользователь может голосовать
+                      @if (votes == null)
+                       {
+                          
+                        <p style="text-align:right">
+                            Оцените полезность:
+                            <div style="float: right;">                          
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <a href="@Url.Action("UpdateVote", "Home", new { feedback = feedback.Id, vote = i }, null)"><i class="material-icons">star</i></a>
+                                }  
+                            </div>                                    
+                        </p> 
+                      }
+                      // Если список голосов не пуст, но данный пользователь еще не голосовал
+                      else if (votes.FirstOrDefault(m => m.UserId == ViewBag.UserId) == null)
+                      {
+                        <p style="text-align:right">
+                            Оцените полезность:
+                            <div style="float: right;">                          
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <a href="@Url.Action("UpdateVote", "Home", new { feedback = feedback.Id, vote = i }, null)"><i class="material-icons">star</i></a>
+                                }  
+                            </div>                                    
+                        </p> 
+                        }
+                      // Если пользователь проголосовал, он может увидеть свой голос
+                        else
+                        {
+                        <p style="text-align:right">
+                            Ваша оценка:
+                            <div style="float: right;">
+                                @for (int i = 1; i <= votes.FirstOrDefault(m => m.UserId == ViewBag.UserId).RatingGiven; i++)
+                                {
+                                    <i class="material-icons">star</i>
+                                } 
+                            </div>                                    
+                        </p> 
+
+                      }
+                   }
+            </div>
+        </div>            
+    </div>
+}

@@ -1,0 +1,65 @@
+﻿@model WebApplication.Models.User
+@{
+    ViewData["Title"] = "Добавление";
+}
+
+<nav class="nav-container white">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a asp-controller="Users" asp-action="Index" asp-area="Administration" class="breadcrumb teal-text">Пользователи</a>
+            <a class="breadcrumb grey-text breadcrumb-child active">@ViewData["Title"]</a>
+        </div>
+    </div>
+</nav>
+
+<div class="crud-container white z-depth-1 s12">
+    <h4 class="teal-text">@ViewData["Title"]</h4>
+    <hr class="hr-crud-split" />
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="input-field">
+            <label asp-for="FirstName" class="control-label"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="input-field">
+            <label asp-for="Patronymic" class="control-label"></label>
+            <input asp-for="Patronymic" class="form-control" />
+            <span asp-validation-for="Patronymic" class="text-danger"></span>
+        </div>
+        <div class="input-field">
+            <label asp-for="LastName" class="control-label"></label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="input-field">
+            <label asp-for="Login" class="control-label"></label>
+            <input asp-for="Login" class="form-control" />
+            <span asp-validation-for="Login" class="text-danger"></span>
+        </div>
+        <div class="input-field">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="input-field">
+            <select asp-for="RoleId" asp-items="ViewBag.RoleId"></select>
+            <label asp-for="RoleId"></label>
+        </div>
+        <div class="input-field">
+            <label asp-for="VotesCounter" class="control-label"></label>
+            <input asp-for="VotesCounter" class="form-control" />
+            <span asp-validation-for="VotesCounter" class="text-danger"></span>
+        </div>
+        <center>
+            <button type="submit" class="btn btn-large waves-effect waves-light teal crud-command-button" asp-controller="Users" asp-area="Administration" asp-action="Create">Добавить</button>
+        </center>
+    </form>
+</div>
+<script>
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
+

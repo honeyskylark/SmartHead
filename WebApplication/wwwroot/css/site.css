@@ -1,0 +1,132 @@
+﻿html, body {
+    height: 100%;
+    font-family: Montserrat, sans-serif;
+    padding: 50px 0 0 0;
+}
+.container {
+    margin-bottom: 50px;
+}
+
+.hr-splitter {
+    border: 1px solid rgba(0,0,0,0.14)
+}
+/* Navmenu custom styles */
+.navmenu {
+    padding-top: 50px;
+    width: 200px;
+}
+
+.navbar {
+    display: block;
+    text-align: center;
+}
+
+.navmenu-image{
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+}
+
+.navbar-brand {
+    display: inline-block;
+    float: none;
+}
+
+.navbar-toggle {
+    position: absolute;
+    float: left;
+    margin-left: 15px;
+}
+
+@media (min-width: 1px) {
+    .navbar-toggle {
+        display: block !important;
+    }
+}
+
+@media (min-width: 992px) {
+    body {
+        padding: 0 0 0 150px;
+    }
+
+    .navmenu {
+        padding-top: 0;
+    }
+
+    .navbar {
+        display: none !important; /* IE8 fix */
+    }
+}
+/* !Navmenu custom styles */
+
+h5 {
+    font-weight: 400;
+}
+
+.tabs .indicator {
+    background-color: #e0f2f1;
+    height: 60px;
+    opacity: 0.3;
+}
+
+.form-container {
+    padding: 40px;
+    padding-top: 10px;
+}
+
+.confirmation-tabs-btn {
+    position: absolute;
+}
+
+.input-field-icon {
+    font-size: 2.5rem;
+    margin-top: 11px;
+    margin-left: -11px;
+}
+
+.crud-command-button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.crud-command-actions {
+    text-align: right;
+}
+.crud-container {
+    padding: 1px 15px 1px 15px;
+}
+.feedback-container {
+    padding: 15px 15px 1px 15px;
+    margin-bottom: 15px;
+}
+
+.hr-crud-split {
+    border-top: 1px solid teal;
+}
+.crud-header {
+    border-bottom: 1px solid teal !important;
+    border-top: 1px solid teal;
+}
+.details-dt {
+    margin-bottom: 10px;
+    text-align:left!important;
+}
+.details-dd {
+    margin-bottom: 10px;
+}
+.breadcrumb {
+     background: none; 
+}
+.breadcrumb:before {
+    color:teal;
+}
+.nav-container {
+    margin-bottom: 25px;
+    margin-top: -25px;
+}
+.breadcrumb-child {
+    margin-left: -30px;
+}
+.breadcrumb-child:hover {
+    text-decoration: none;
+}

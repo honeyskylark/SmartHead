@@ -1,0 +1,63 @@
+﻿@model WebApplication.Models.Vote
+
+@{
+    ViewData["Title"] = "Добавление";
+}
+
+<nav class="nav-container white">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a asp-controller="Votes" asp-action="Index" asp-area="Administration" class="breadcrumb teal-text">Голоса</a>
+            <a class="breadcrumb grey-text breadcrumb-child active">@ViewData["Title"]</a>
+        </div>
+    </div>
+</nav>
+
+<div class="crud-container white z-depth-1 s1">
+    <h4 class="teal-text">@ViewData["Title"]</h4>
+    <hr class="hr-crud-split" />
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <br />
+        <div class="input-field">
+            <select asp-for="UserId" asp-items="ViewBag.UserId"></select>
+            <label asp-for="UserId"></label>
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="input-field">
+            <select asp-for="FeedbackId" asp-items="ViewBag.FeedbackId"></select>
+            <label asp-for="FeedbackId"></label>
+            <span asp-validation-for="FeedbackId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="RatingGiven" class="control-label"></label>
+            <input asp-for="RatingGiven" class="form-control" />
+            <span asp-validation-for="RatingGiven" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Time" class="control-label"></label>
+            <input asp-for="Time" class="form-control" />
+            <span asp-validation-for="Time" class="text-danger"></span>
+        </div>
+        <div class="input-field">
+            <label>
+                <input type="checkbox" asp-for="VoteReturned" />
+                <span>Голос возвращен</span>
+            </label>
+            <span asp-validation-for="VoteReturned" class="text-danger"></span>
+        </div>
+        <br />
+        <br />
+        <hr class="hr-crud-split" />
+        <center>
+            <button type="submit" class="btn btn-large waves-effect waves-light teal crud-command-button" asp-controller="Votes" asp-area="Administration" asp-action="Create">Добавить</button>
+        </center>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>

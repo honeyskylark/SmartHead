@@ -1,0 +1,69 @@
+﻿@model WebApplication.Models.User
+@{
+    ViewData["Title"] = "Удаление";
+}
+
+<nav class="nav-container white">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a asp-controller="Users" asp-action="Index" asp-area="Administration" class="breadcrumb teal-text">Пользователи</a>
+            <a class="breadcrumb grey-text breadcrumb-child active">@Model.FirstName @Model.LastName</a>
+        </div>
+    </div>
+</nav>
+
+<div class="crud-container white z-depth-1 s1">
+    <h4 class="teal-text">Вы уверены что хотите это удалить?</h4>
+    <hr class="hr-crud-split" />
+    <dl class="dl-horizontal">
+        <dt class="details-dt">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="details-dt">
+            @Html.DisplayNameFor(model => model.Patronymic)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patronymic)
+        </dd>
+        <dt class="details-dt">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="details-dt">
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+        <dt class="details-dt">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt class="details-dt">
+            @Html.DisplayNameFor(model => model.VotesCounter)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VotesCounter)
+        </dd>
+        <dt class="details-dt">
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Role.Name)
+        </dd>
+    </dl>
+    <hr class="hr-crud-split" />
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <center>
+            <button type="submit" class="btn btn-large waves-effect waves-light teal crud-command-button" asp-controller="Users" asp-area="Administration" asp-action="Delete">Удалить</button>
+        </center>
+    </form>
+</div>

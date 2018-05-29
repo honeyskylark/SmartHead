@@ -1,0 +1,29 @@
+﻿@model WebApplication.Models.Role
+@{
+    ViewData["Title"] = "Редактирование";
+}
+
+<nav class="nav-container white">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a asp-controller="Roles" asp-action="Index" asp-area="Administration" class="breadcrumb teal-text">Роли</a>
+            <a class="breadcrumb grey-text breadcrumb-child active">@Model.Name</a>
+        </div>
+    </div>
+</nav>
+
+<div class="crud-container white z-depth-1 s1">
+    <h4 class="teal-text">@ViewData["Title"]</h4>
+    <hr class="hr-crud-split" />
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="input-field">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <center>
+            <button type="submit" class="btn btn-large waves-effect waves-light teal crud-command-button" asp-controller="Roles" asp-area="Administration" asp-action="Edit">Редактировать</button>
+        </center>
+    </form>
+</div>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700|Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="~/lib/jasny-bootstrap/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- Materialize -->
+    <link type="text/css" href="~/lib/materialize/materialize/css/materialize.min.css" rel="stylesheet" media="screen">
+
+    <!-- Site styles -->
+    <link href="~/css/site.css" rel="stylesheet" media="screen">
+
+</head>
+<body>
+    @await Html.PartialAsync("../Components/LayoutNavbar.cshtml")
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    <script src="~/lib/materialize/materialize/js/materialize.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/jasny-bootstrap/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿@model WebApplication.Models.ViewModels.RegistrationModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<div class="container white z-depth-5">
+    <div id="login" class="col s12">
+        <form class="col s12" asp-action="Registration" asp-controller="Account">
+            <div class="validation" asp-validation-summary="ModelOnly"></div>
+            <div class="form-container">
+                <h3 class="teal-text center">Регистрация</h3>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input asp-for="FirstName">
+                        <label asp-for="FirstName"></label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input asp-for="LastName">
+                        <label asp-for="LastName"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s1 input-field">
+                        <i class="material-icons input-field-icon">person</i>
+                    </div>
+                    <div class="input-field col s11">
+                        <input input asp-for="Login">
+                        <label asp-for="Login"></label>
+                        <span asp-validation-for="Login" class="text-danger" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s1 input-field">
+                        <i class="material-icons input-field-icon">lock</i>
+                    </div>
+                    <div class="input-field col s11">
+                        <input asp-for="Password" type="password">
+                        <label asp-for="Password"></label>
+                        <span asp-validation-for="Password" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s1 input-field">
+                        <i class="material-icons input-field-icon">refresh</i>
+                    </div>
+                    <div class="input-field col s11">
+                        <input asp-for="ConfirmPassword" type="password">
+                        <label asp-for="ConfirmPassword"></label>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger" />
+                    </div>
+                </div>
+                <br>
+                <center>
+                    <button class="btn btn-large waves-effect waves-light teal" type="submit">Зарегистрироваться</button>
+                </center>
+            </div>
+        </form>
+    </div>
+</div>

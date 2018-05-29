@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebApplication.Models.Role>
+@{
+    ViewData["Title"] = "Роли";
+}
+
+<div class="crud-container white z-depth-1 s1">
+    <h4 class="teal-text">@ViewData["Title"]</h4>
+    <table class="striped ">
+        <thead>
+            <tr class="crud-header">
+                <th>ID</th>
+                <th>Имя</th>
+                <th class="crud-command-actions">Действия</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in Model)
+            {
+                <tr>
+                    <td>@role.Id</td>
+                    <td>@role.Name</td>
+                    <td class="crud-command-actions">
+                        <a asp-controller="Roles" asp-area="Administration" asp-action="Details" asp-route-id="@role.Id"><i class="material-icons small teal-text">remove_red_eye</i></a>
+                        <a asp-controller="Roles" asp-area="Administration" asp-action="Edit" asp-route-id="@role.Id"><i class="material-icons small teal-text">edit</i></a>
+                        <a asp-controller="Roles" asp-area="Administration" asp-action="Delete" asp-route-id="@role.Id"><i class="material-icons small teal-text">delete</i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <hr class="hr-crud-split" />
+    <center>
+        <a class="btn btn-large waves-effect waves-light teal crud-command-button" asp-controller="Roles" asp-area="Administration" asp-action="Create">Добавить</a>
+    </center>
+</div>

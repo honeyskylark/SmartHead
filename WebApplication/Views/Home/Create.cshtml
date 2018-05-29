@@ -1,0 +1,39 @@
+﻿@model WebApplication.Models.Feedback
+@{
+    ViewData["Title"] = "Добавление отзыва";
+}
+
+<nav class="nav-container white">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a asp-controller="Home" asp-action="Index" asp-area="" class="breadcrumb teal-text">Главная</a>
+            <a class="breadcrumb grey-text breadcrumb-child active">@ViewData["Title"]</a>
+        </div>
+    </div>
+</nav>
+
+<div class="crud-container white z-depth-1 s12">
+    <h4 class="teal-text">@ViewData["Title"]</h4>
+    <hr class="hr-crud-split" />
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="input-field">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="input-field">
+            <label asp-for="Content" class="control-label"></label>
+            <textarea asp-for="Content" class="materialize-textarea"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+        <center>
+            <button type="submit" class="btn btn-large waves-effect waves-light teal crud-command-button" asp-controller="Home" asp-area="" asp-action="Create">Добавить</button>
+        </center>
+    </form>
+</div>
+<script>
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
