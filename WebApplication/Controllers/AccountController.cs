@@ -74,10 +74,10 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(LoginModel loginModel)
         {
-            await EnsureUpdatedAsync(loginModel.Login);
-
             if (ModelState.IsValid)
             {
+                await EnsureUpdatedAsync(loginModel.Login);
+
                 User user = await _context.Users
                     .Include(u => u.Role)
                     .FirstOrDefaultAsync(u => u.Login == loginModel.Login && u.Password == loginModel.Password);

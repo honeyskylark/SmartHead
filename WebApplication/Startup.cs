@@ -30,7 +30,6 @@ namespace WebApplication
               {
                   options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Index");
               });
-            services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
             services.AddMvc();
 
             // Services registration

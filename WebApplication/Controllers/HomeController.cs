@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication.Models;
 using WebApplication.Models.Contexts;
+using WebApplication.Models.ViewModels;
+using WebApplication.Models.ViewModels.Home;
 
 namespace WebApplication.Controllers
 {
@@ -17,7 +20,7 @@ namespace WebApplication.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
             var user = await _context.Users.SingleOrDefaultAsync(u => u.Login == User.Identity.Name);
             if(user != null)
@@ -27,7 +30,25 @@ namespace WebApplication.Controllers
             ViewBag.Votes = _context.Votes
                 .Include(v => v.Feedback)
                 .Include(v => v.User);
-            return View(await _context.Feedbacks.Include(u => u.User).ToListAsync());
+
+            int pageSize = 2;
+
+
+            var feedbacks =  _context.Feedbacks.Include(u => u.User);
+
+            var count = await feedbacks.CountAsync();
+            var items = await feedbacks.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
+
+            IndexViewModel viewModel = new IndexViewModel
+            {
+                PageViewModel = pageViewModel,
+                Feedbacks = items
+            };
+
+            return View(viewModel);
+
         }
 
         [HttpGet("{vote:int}/{feedback:int}")]
@@ -83,21 +104,5 @@ namespace WebApplication.Controllers
             }
             return View(feedback);
         }
-
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-      
     }
 }

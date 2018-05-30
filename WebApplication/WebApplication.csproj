@@ -14,8 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Feedback\Controllers\" />
-    <Folder Include="Areas\Feedback\Views\" />
     <Folder Include="Constants\" />
   </ItemGroup>
 
